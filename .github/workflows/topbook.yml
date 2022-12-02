@@ -24,9 +24,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install requests
+          pip install lxml
           python baidu.py
-      - name: Commit
-        run: |
+      - name: Commit
+        run: |
           git config --global user.email  118094961+makcol@users.noreply.github.com
           git config --global user.name makcol
           git add .
