@@ -17,8 +17,7 @@ bd_hot_url = 'https://top.baidu.com/board?tab=novel'
 response = requests.get(bd_hot_url, headers=headers)
 html = etree.HTML(response.text)
 type_block = html.xpath("//div[contains(@class,'tag-item_2erEC')]/text()")
-print(type_block)
-book_map = {}
+book_data = []
 for item in type_block:
     hot_url = "https://top.baidu.com/board?platform=pc&tab=novel&tag={\"category\":\"" + item.strip() + "\"}"
     response = requests.get(hot_url, headers=headers)
@@ -55,7 +54,10 @@ for item in type_block:
         print('描述是：{}'.format(desc))
         book['desc'] = desc
         book_list.append(book)
-    book_map[item.strip()] = book_list
+    book_map = {}
+    book_map['type'] = item.strip()
+    book_map['data'] = book_list
+    book_data.append(book_map)
 
 output_json = json.dumps(book_map,ensure_ascii=False)
 file = open("book.json", "w", encoding='utf-8')
