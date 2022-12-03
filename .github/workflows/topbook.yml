@@ -28,9 +28,9 @@ jobs:
           python baidu.py
       - name: Commit
         run: |
-          export GITHUB_USER=yukang
+          export GITHUB_USER=makcol
           echo "GITHUB_USER=$GITHUB_USER" >> $GITHUB_ENV
-          echo "GITHUB_TOKEN=${{ secrets.PAT }}" >> $GITHUB_ENV
+          echo "GITHUB_TOKEN=${{ secrets.commit }}" >> $GITHUB_ENV
           git config --global user.email "makcolcol@outlook.com"
           git config --global user.name $GITHUB_USER
           git add .
