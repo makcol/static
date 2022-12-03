@@ -59,7 +59,7 @@ for item in type_block:
     book_map['data'] = book_list
     book_data.append(book_map)
 
-output_json = json.dumps(book_map,ensure_ascii=False)
+output_json = json.dumps(book_data,ensure_ascii=False)
 file = open("book.json", "w", encoding='utf-8')
 file.write(output_json.replace(u'\xa0', u' '))
 file.close()
